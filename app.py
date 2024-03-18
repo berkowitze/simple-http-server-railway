@@ -1,4 +1,5 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
+import os
 
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -14,5 +15,5 @@ def run(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler, port=80
     httpd.serve_forever()
 
 if __name__ == "__main__":
-    run()
+    run(port=int(os.getenv("PORT", default=5000)))
 
